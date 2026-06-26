@@ -4,20 +4,13 @@
 import React from 'react';
 import { ArrowLeft, HelpCircle, Users, MessageSquare, Gamepad2, ChevronRight } from 'lucide-react';
 import LinkButton from '@/components/ui/LinkButton';
+import PageHeader from '@/components/ui/PageHeader';
 
 export default function Rewards() {
     return (
         <div className="p-4">
             <div className="max-w-md mx-auto">
-                <div className="flex items-center justify-between mb-6">
-                    <LinkButton to="/" className="bg-[#2a2f3a] hover:bg-[#373e51] rounded-full p-2.5 transition">
-                        <ArrowLeft className="w-6 h-6 text-gray-300" />
-                    </LinkButton>
-                    <h1 className="text-gray-100 text-xl font-bold">Rewards</h1>
-                    <button className="bg-[#2a2f3a] hover:bg-[#373e51] rounded-full p-2.5 transition">
-                        <HelpCircle className="w-6 h-6 text-gray-300" />
-                    </button>
-                </div>
+                <PageHeader title="Rewards" />
 
                 <div className="border bg-[#161920] border-[#373e51] rounded-3xl p-5 flex items-center justify-between mb-6 shadow-lg shadow-[#373e51]/40">
                     <div className="flex items-center gap-3">

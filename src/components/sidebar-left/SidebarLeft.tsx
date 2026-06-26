@@ -72,7 +72,9 @@ export default function SidebarLeft() {
                         <span className="ml-2">Rewards</span>
                     </button>
 
-                    <button className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
+                    <button
+                        onClick={() => router.push("/game-reminders")}
+                        className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
                         <CustomBellIcon2 className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
                         <span className="ml-2">Notification</span>
                     </button>

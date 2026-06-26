@@ -4,17 +4,13 @@
 import React from 'react';
 import { ChevronLeft, Shield, Lock, Key, AlertTriangle, Wallet, LogOut } from 'lucide-react';
 import LinkButton from '@/components/ui/LinkButton';
+import PageHeader from '@/components/ui/PageHeader';
 
 export default function GameSecurity() {
     return (
         <div>
             <div className="max-w-md mx-auto">
-                <div className="sticky top-0 z-50 bg-[#161920] border-b border-gray-800 mx-6 py-4">
-                    <LinkButton to="/settings" className="group flex items-center gap-2 text-indigo-500 group-hover:text-indigo-600">
-                        <ChevronLeft size={24} />
-                        Back
-                    </LinkButton>
-                </div>
+                <PageHeader title="Security" />
 
                 <div className="px-6 py-6">
                     <div className="flex items-center gap-3 mb-3">

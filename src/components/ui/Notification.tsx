@@ -3,7 +3,9 @@
 
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Gift, Star, Scroll, Zap } from 'lucide-react';
+
 import LinkButton from '@/components/ui/LinkButton';
+import PageHeader from '@/components/ui/PageHeader';
 
 const ToggleItem = ({ icon: Icon, iconColor = "text-blue-500", title, description, value, onToggle }) => (
     <div className="flex items-center bg-[#12161f] border border-[#373e51] rounded-xl justify-between p-4 gap-2">
@@ -47,19 +49,15 @@ export default function Notification() {
     return (
         <div>
             <div className="max-w-md mx-auto">
-                <div className="sticky top-0 z-50 bg-[#161920] border-b border-gray-800 mx-6 py-4">
-                    <LinkButton to="/settings" className="group flex items-center gap-2 text-indigo-500 group-hover:text-indigo-600">
-                        <ChevronLeft size={24} />
-                        Back
-                    </LinkButton>
-                </div>
+
+                <PageHeader title="Reminder" />
 
                 <div className="px-6 py-6">
                     <h1 className="text-2xl font-bold text-white mb-1">Notification Settings</h1>
                     <p className="text-sm text-gray-400">Change your notification here.</p>
                 </div>
 
-                <div className="px-6 pb-6">
+                <div className="px-6 pb-6 space-y-4 border bg-[#161920] border-[#373e51] rounded-3xl p-5  mb-6 shadow-lg shadow-[#373e51]/40">
                     <h2 className="text-base font-bold text-gray-400 mb-4">Game Reminder</h2>
                     <div className="space-y-4">
                         {gameReminders.map((item) => (
@@ -88,15 +86,18 @@ export default function Notification() {
                             <ChevronRight size={20} className="text-gray-400 shrink-0 ml-3" />
                         </div>
                     </div>
+
+
+                    <div className="px-6 pb-6">
+                        <h2 className="text-base font-bold text-gray-400 mb-4">Insight</h2>
+                        <div className="mb-4">
+                            <ToggleItem title="Weekly Insight" value={settings.weeklyinsight} onToggle={() => toggleSetting('weeklyinsight')} />
+                        </div>
+                        <ToggleItem title="AI Recommendations" value={settings.aiRecommendations} onToggle={() => toggleSetting('aiRecommendations')} />
+                    </div>
                 </div>
 
-                <div className="px-6 pb-6">
-                    <h2 className="text-base font-bold text-gray-400 mb-4">Insight</h2>
-                    <div className="mb-4">
-                        <ToggleItem title="Weekly Insight" value={settings.weeklyinsight} onToggle={() => toggleSetting('weeklyinsight')} />
-                    </div>
-                    <ToggleItem title="AI Recommendations" value={settings.aiRecommendations} onToggle={() => toggleSetting('aiRecommendations')} />
-                </div>
+
             </div>
         </div>
     );

@@ -11,8 +11,10 @@ import {
     ChevronLeft,
 } from "lucide-react";
 import { useState } from "react";
-import LinkButton from "@/components/ui/LinkButton";
 import { useRouter } from "next/navigation";
+
+import LinkButton from "@/components/ui/LinkButton";
+import PageHeader from "@/components/ui/PageHeader";
 
 export default function Settings() {
     const [language, setLanguage] = useState("English");
@@ -20,16 +22,10 @@ export default function Settings() {
 
     return (
         <div className="mx-auto">
-            <div className="max-w-3xl mx-auto text-gray-100 px-6 py-4">
-                <div className="sticky top-0 bg-[#161920] border-b border-gray-800 px-0 py-4">
-                    <LinkButton
-                        to="/"
-                        className="group flex items-center gap-2 text-indigo-500 group-hover:text-indigo-600"
-                    >
-                        <ChevronLeft size={24} />
-                        Back
-                    </LinkButton>
-                </div>
+            <div className="max-w-md mx-auto text-gray-100 px-6 py-4">
+
+                <PageHeader title="Settings" />
+
 
                 <div className="py-6">
                     <h1 className="text-2xl font-bold mb-2">Settings</h1>
@@ -38,7 +34,7 @@ export default function Settings() {
                     </p>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-4 border bg-[#161920] border-[#373e51] rounded-3xl p-5  mb-6 shadow-lg shadow-[#373e51]/40">
                     <div
                         onClick={() => router.push("/settings/profile")}
                         className="bg-[#12161f] rounded-xl border border-[#373e51] px-4 py-4 cursor-pointer hover:bg-[#1a2040] transition-colors"
@@ -49,15 +45,6 @@ export default function Settings() {
                         </div>
                     </div>
 
-                    <div
-                        onClick={() => router.push("/settings/game-reminders")}
-                        className="bg-[#12161f] rounded-xl border border-[#373e51] px-4 py-4 cursor-pointer hover:bg-[#1a2040] transition-colors"
-                    >
-                        <div className="flex items-center gap-3">
-                            <Bell className="text-indigo-400" />
-                            <span>Notifications</span>
-                        </div>
-                    </div>
 
                     <div
                         onClick={() => router.push("/settings/security")}
