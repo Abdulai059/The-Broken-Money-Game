@@ -57,6 +57,7 @@ export default function SidebarLeft() {
                 />
 
                 <SidebarFeatureCard>
+
                     <button
                         onClick={() => router.push("/settings")}
                         className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group"
@@ -65,9 +66,10 @@ export default function SidebarLeft() {
                         <span className="ml-2">Settings</span>
                     </button>
 
-                    <button className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
-                        <FriendsIcon className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
-                        <span className="ml-2">Friends</span>
+                    <button onClick={() => router.push("/rewards")}
+                        className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
+                        <FlowerIcon className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
+                        <span className="ml-2">Rewards</span>
                     </button>
 
                     <button className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
@@ -76,9 +78,11 @@ export default function SidebarLeft() {
                     </button>
 
                     <button className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
-                        <FlowerIcon className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
-                        <span className="ml-2">Rewards</span>
+                        <FriendsIcon className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
+                        <span className="ml-2">Community</span>
                     </button>
+
+
                 </SidebarFeatureCard>
             </div>
 
