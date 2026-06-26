@@ -1,23 +1,22 @@
-// @ts-nocheck
-'use client'
+'use client';
 
-import {
-    Bell,
-    Shield,
-    User,
-    Languages,
-    HelpCircle,
-    Info,
-    ChevronLeft,
-} from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import LinkButton from "@/components/ui/LinkButton";
-import PageHeader from "@/components/ui/PageHeader";
+import {
+    User,
+    Shield,
+    HelpCircle,
+    Info,
+    Volume2,
+    Languages,
+} from "lucide-react";
 
-export default function Settings() {
-    const [language, setLanguage] = useState("English");
+import PageHeader from "@/components/ui/PageHeader";
+import SettingsItem from "@/components/ui/SettingsItem";
+
+export default function SettingsPage() {
+    const [language, setLanguage] = useState<string>("English");
     const router = useRouter();
 
     return (
@@ -26,7 +25,6 @@ export default function Settings() {
 
                 <PageHeader title="Settings" />
 
-
                 <div className="py-6">
                     <h1 className="text-2xl font-bold mb-2">Settings</h1>
                     <p className="text-sm pr-6 text-gray-400">
@@ -34,58 +32,55 @@ export default function Settings() {
                     </p>
                 </div>
 
-                <div className="space-y-4 border bg-[#161920] border-[#373e51] rounded-3xl p-5  mb-6 shadow-lg shadow-[#373e51]/40">
-                    <div
+                <div className="space-y-4 border bg-[#161920] border-[#373e51] rounded-3xl p-5 mb-6 shadow-lg shadow-[#373e51]/40">
+
+                    <SettingsItem
+                        icon={<User className="text-blue-400" />}
+                        label="Profile"
                         onClick={() => router.push("/settings/profile")}
-                        className="bg-[#12161f] rounded-xl border border-[#373e51] px-4 py-4 cursor-pointer hover:bg-[#1a2040] transition-colors"
-                    >
-                        <div className="flex items-center gap-3">
-                            <User className="text-blue-400" />
-                            <span>Profile</span>
-                        </div>
-                    </div>
+                    />
 
+                    <SettingsItem
+                        icon={<Volume2 className="text-blue-400" />}
+                        label="Game Sounds"
+                        onClick={() => router.push("/settings/gameSound")}
+                    />
 
-                    <div
+                    <SettingsItem
+                        icon={<Shield className="text-red-400" />}
+                        label="Security"
                         onClick={() => router.push("/settings/security")}
-                        className="bg-[#12161f] rounded-xl border border-[#373e51] px-4 py-4 cursor-pointer hover:bg-[#1a2040] transition-colors"
-                    >
-                        <div className="flex items-center gap-3">
-                            <Shield className="text-red-400" />
-                            <span>Security</span>
-                        </div>
-                    </div>
+                    />
 
-                    <div className="flex items-center justify-between bg-[#12161f] rounded-xl border border-[#373e51] px-4 py-4">
-                        <div className="flex items-center gap-3">
-                            <Languages className="text-emerald-400" />
-                            <span>Language</span>
-                        </div>
-                        <select
-                            value={language}
-                            onChange={(e) => setLanguage(e.target.value)}
-                            className="bg-transparent text-sm text-gray-300 outline-none"
-                        >
-                            <option>English</option>
-                            <option>French</option>
-                            <option>Twi</option>
-                            <option>Hausa</option>
-                        </select>
-                    </div>
+                    <SettingsItem
+                        icon={<Languages className="text-emerald-400" />}
+                        label="Language"
+                        rightElement={
+                            <select
+                                value={language}
+                                onChange={(e) => setLanguage(e.target.value)}
+                                className="bg-transparent text-sm text-gray-300 outline-none"
+                            >
+                                <option value="English">English</option>
+                                <option value="French">French</option>
+                                <option value="Twi">Twi</option>
+                                <option value="Hausa">Hausa</option>
+                            </select>
+                        }
+                    />
 
-                    <div className="flex items-center justify-between bg-[#12161f] rounded-xl border border-[#373e51] px-4 py-4 cursor-pointer hover:bg-[#1a2040] transition-colors">
-                        <div className="flex items-center gap-3">
-                            <HelpCircle className="text-blue-400" />
-                            <span>Help / FAQ</span>
-                        </div>
-                    </div>
+                    <SettingsItem
+                        icon={<HelpCircle className="text-blue-400" />}
+                        label="Help / FAQ"
+                        onClick={() => router.push("/settings/help")}
+                    />
 
-                    <div className="flex items-center justify-between bg-[#12161f] rounded-xl border border-[#373e51] px-4 py-4 cursor-pointer hover:bg-[#1a2040] transition-colors">
-                        <div className="flex items-center gap-3">
-                            <Info className="text-gray-400" />
-                            <span>About Spin Quest</span>
-                        </div>
-                    </div>
+                    <SettingsItem
+                        icon={<Info className="text-gray-400" />}
+                        label="About Spin Quest"
+                        onClick={() => router.push("/settings/about")}
+                    />
+
                 </div>
             </div>
         </div>

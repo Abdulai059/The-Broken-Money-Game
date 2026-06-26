@@ -1,29 +1,30 @@
 // @ts-nocheck
 'use client'
 
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef } from "react";
+import { useAudioStore } from "@/store/useAudioStore";
 
-const MusicContext = createContext();
+/**
+ * MusicProvider
+ *
+ * Owns the actual <audio> elements (bgAudioRef, clickAudioRef).
+ * All preference state (playing, soundEffects) now lives in
+ * useAudioStore (Zustand) and is persisted to localStorage automatically.
+ *
+ * This context now only exposes playClick() — the one action that
+ * needs direct access to the audio ref at call time.
+ * Components that need to toggle music/effects import useAudioStore directly.
+ */
+
+const MusicContext = createContext<{ playClick: () => void } | null>(null);
 
 export function MusicProvider({ children }) {
-    const bgAudioRef = useRef(null);
-    const clickAudioRef = useRef(null);
+    const bgAudioRef = useRef<HTMLAudioElement>(null);
+    const clickAudioRef = useRef<HTMLAudioElement>(null);
 
-    const [playing, setPlaying] = useState(true);
-    const [soundEffects, setSoundEffects] = useState(true);
-    const [initialized, setInitialized] = useState(false);
-
-    const toggleMusic = () => {
-        if (!bgAudioRef.current) return;
-        setPlaying((prev) => {
-            const next = !prev;
-            if (next) bgAudioRef.current.play().catch(() => { });
-            else bgAudioRef.current.pause();
-            return next;
-        });
-    };
-
-    const toggleSoundEffects = () => setSoundEffects((prev) => !prev);
+    const playing = useAudioStore((s) => s.playing);
+    const soundEffects = useAudioStore((s) => s.soundEffects);
+    const toggleMusic = useAudioStore((s) => s.toggleMusic);
 
     const playClick = () => {
         if (!soundEffects || !clickAudioRef.current) return;
@@ -31,26 +32,31 @@ export function MusicProvider({ children }) {
         clickAudioRef.current.play().catch(() => { });
     };
 
+    // React to playing changes — play or pause bg music accordingly
     useEffect(() => {
-        if (initialized) return;
+        if (!bgAudioRef.current) return;
+        if (playing) {
+            bgAudioRef.current.loop = true;
+            bgAudioRef.current.play().catch(() => { });
+        } else {
+            bgAudioRef.current.pause();
+        }
+    }, [playing]);
 
+    // Start bg music on first user interaction (browser autoplay policy)
+    useEffect(() => {
         const startMusic = () => {
             if (bgAudioRef.current && playing) {
                 bgAudioRef.current.loop = true;
                 bgAudioRef.current.play().catch(() => { });
-                setInitialized(true);
             }
-            window.removeEventListener("click", startMusic);
         };
-
         window.addEventListener("click", startMusic, { once: true });
         return () => window.removeEventListener("click", startMusic);
-    }, [initialized, playing]);
+    }, [playing]);
 
     return (
-        <MusicContext.Provider
-            value={{ playing, toggleMusic, soundEffects, toggleSoundEffects, playClick }}
-        >
+        <MusicContext.Provider value={{ playClick }}>
             {children}
             <audio ref={bgAudioRef} src="/sound/gamemusic.mp3" />
             <audio ref={clickAudioRef} src="/sound/clicksound.wav" />

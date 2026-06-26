@@ -45,7 +45,7 @@ function Nav() {
                 </div>
                 <div className="md:flex gap-5">
                     <div className="hidden md:flex">
-                        <BalanceBadge amount="0.0000" icon="https://assets.codepen.io/3685267/wheel-of-fortune-aetkeerk.png" />
+                        <BalanceBadge icon="https://assets.codepen.io/3685267/wheel-of-fortune-aetkeerk.png" />
                     </div>
                     <div>
                         <ConnectWallet />

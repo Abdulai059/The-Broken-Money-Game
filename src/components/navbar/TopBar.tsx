@@ -1,22 +1,21 @@
 // @ts-nocheck
 'use client'
 
-import { useState } from "react";
 import ResourceButton from "./ResourceButton";
-import MobileSettings from "./MobileSettings";
+import MobileSettings from "../ui/MobileSettings";
 import Modal from "@/components/ui/Modal";
-import { useMusic } from "@/context/MusicProvider";
+import { usePlayerStore } from "@/store/usePlayerStore";
 
 export default function TopBar({ notify }) {
-    const { playClick } = useMusic();
+    const gold = usePlayerStore((s) => s.gold);
+    const fire = usePlayerStore((s) => s.fire);
+    const water = usePlayerStore((s) => s.water);
+    const earn = usePlayerStore((s) => s.earn);
 
-    const [resources, setResources] = useState({ gold: 150, fire: 0, water: 0 });
-
-    const earn = (type) => {
+    const handleEarn = (type) => {
+        earn(type);
         const inc = type === "gold" ? 10 : 1;
-        setResources((r) => ({ ...r, [type]: r[type] + inc }));
         notify(`+${inc} ${type}! 🎉`);
-        playClick();
     };
 
     return (
@@ -27,16 +26,16 @@ export default function TopBar({ notify }) {
                 </button>
 
                 <div className="flex scale-88 gap-1.5">
-                    <ResourceButton icon="/emoji/trophy.gif" value={resources.gold} onClick={() => earn("gold")} />
-                    <ResourceButton icon="/emoji/fire.gif" value={resources.fire} onClick={() => earn("fire")} />
-                    <ResourceButton icon="/emoji/globe.gif" value={resources.water} onClick={() => earn("water")} />
+                    <ResourceButton icon="/emoji/trophy.gif" value={gold} onClick={() => handleEarn("gold")} />
+                    <ResourceButton icon="/emoji/fire.gif" value={fire} onClick={() => handleEarn("fire")} />
+                    <ResourceButton icon="/emoji/globe.gif" value={water} onClick={() => handleEarn("water")} />
                 </div>
 
                 <div className="flex gap-1">
-                    <button onClick={playClick} className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
+                    <button className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
                         <img src="/emoji/gifts.png" alt="Gift" className="w-7 h-7 object-contain" />
                     </button>
-                    <div onClick={playClick}>
+                    <div>
                         <Modal.Open opens="settings">
                             <button className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
                                 <img src="/emoji/gear.png" alt="Settings" className="w-7 h-7 object-contain" />

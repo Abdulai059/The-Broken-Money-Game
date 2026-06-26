@@ -12,8 +12,7 @@ export default function ProfileMenu() {
         { icon: Edit, label: 'Edit Info', color: 'text-gray-400', path: '/settings/profile/edit-profile' },
         { icon: Lock, label: 'Change Password', color: 'text-gray-400', path: '/settings/profile/account' },
         { icon: UserX, label: 'Close Accounts', color: 'text-gray-400', path: '/settings/close-account' },
-        // { icon: HelpCircle, label: 'Support', color: 'text-gray-400', path: '/support' },
-        // { icon: Bell, label: 'Notifications', color: 'text-gray-400', path: '/settings/profile/game-reminders' },
+
     ];
 
     return (

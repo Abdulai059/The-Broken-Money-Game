@@ -1,11 +1,9 @@
 // @ts-nocheck
 'use client'
 
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Gift, Star, Scroll, Zap } from 'lucide-react';
-
-import LinkButton from '@/components/ui/LinkButton';
+import { ChevronRight, Gift, Star, Scroll, Zap } from 'lucide-react';
 import PageHeader from '@/components/ui/PageHeader';
+import { useNotificationStore } from '@/store/useNotificationStore';
 
 const ToggleItem = ({ icon: Icon, iconColor = "text-blue-500", title, description, value, onToggle }) => (
     <div className="flex items-center bg-[#12161f] border border-[#373e51] rounded-xl justify-between p-4 gap-2">
@@ -28,16 +26,8 @@ const ToggleItem = ({ icon: Icon, iconColor = "text-blue-500", title, descriptio
 );
 
 export default function Notification() {
-    const [settings, setSettings] = useState({
-        dailySpin: false,
-        completeTasks: false,
-        claimRewards: false,
-        boostPowerups: false,
-        weeklyinsight: false,
-        aiRecommendations: false,
-    });
-
-    const toggleSetting = (key) => setSettings((prev) => ({ ...prev, [key]: !prev[key] }));
+    const { dailySpin, completeTasks, claimRewards, boostPowerups, weeklyInsight, aiRecommendations, toggle } =
+        useNotificationStore();
 
     const gameReminders = [
         { key: "dailySpin", icon: Star, color: "text-yellow-400", title: "Daily Spin", description: "Spin the wheel every day to earn points and rewards!" },
@@ -46,10 +36,11 @@ export default function Notification() {
         { key: "boostPowerups", icon: Zap, color: "text-green-400", title: "Use Power-ups", description: "Activate boosts to multiply your points." },
     ];
 
+    const values = { dailySpin, completeTasks, claimRewards, boostPowerups, weeklyInsight, aiRecommendations };
+
     return (
         <div>
             <div className="max-w-md mx-auto">
-
                 <PageHeader title="Reminder" />
 
                 <div className="px-6 py-6">
@@ -57,7 +48,7 @@ export default function Notification() {
                     <p className="text-sm text-gray-400">Change your notification here.</p>
                 </div>
 
-                <div className="px-6 pb-6 space-y-4 border bg-[#161920] border-[#373e51] rounded-3xl p-5  mb-6 shadow-lg shadow-[#373e51]/40">
+                <div className="px-6 pb-6 space-y-4 border bg-[#161920] border-[#373e51] rounded-3xl p-5 mb-6 shadow-lg shadow-[#373e51]/40">
                     <h2 className="text-base font-bold text-gray-400 mb-4">Game Reminder</h2>
                     <div className="space-y-4">
                         {gameReminders.map((item) => (
@@ -67,8 +58,8 @@ export default function Notification() {
                                 iconColor={item.color}
                                 title={item.title}
                                 description={item.description}
-                                value={settings[item.key]}
-                                onToggle={() => toggleSetting(item.key)}
+                                value={values[item.key]}
+                                onToggle={() => toggle(item.key)}
                             />
                         ))}
                         <div className="flex items-center justify-between py-4 cursor-pointer -mx-6 px-6 rounded-lg transition">
@@ -87,17 +78,14 @@ export default function Notification() {
                         </div>
                     </div>
 
-
                     <div className="px-6 pb-6">
                         <h2 className="text-base font-bold text-gray-400 mb-4">Insight</h2>
                         <div className="mb-4">
-                            <ToggleItem title="Weekly Insight" value={settings.weeklyinsight} onToggle={() => toggleSetting('weeklyinsight')} />
+                            <ToggleItem title="Weekly Insight" value={weeklyInsight} onToggle={() => toggle("weeklyInsight")} />
                         </div>
-                        <ToggleItem title="AI Recommendations" value={settings.aiRecommendations} onToggle={() => toggleSetting('aiRecommendations')} />
+                        <ToggleItem title="AI Recommendations" value={aiRecommendations} onToggle={() => toggle("aiRecommendations")} />
                     </div>
                 </div>
-
-
             </div>
         </div>
     );
