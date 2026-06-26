@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+body {
+    background-color: #161920;
+    background: url("https://assets.codepen.io/3685267/wheel-of-fortune-smwdyono.png") repeat;
+    background-size: 500px 500px;
+    font-family: "Playpen Sans", cursive;
+}
+
+.circ-title {
+    stroke: none;
+    fill: #fff;
+    font-weight: 400;
+    font-size: 32px;
+}
+
+.circl-desc {
+    stroke: none;
+    fill: #8f939c;
+    font-weight: 100;
+    font-size: 26px;
+}
+
+.scale-on-hover {
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+.scale-on-hover:hover {
+    transform: scale(2);
+}
+
+.plus-icon-bg {
+    background: linear-gradient(180deg, #7a90ff 0%, #455aff 100%);
+}
+
+.menu-items-selected {
+    background: linear-gradient(180deg, #667aff 0%, #3951e5 100%);
+}
+
+.subscription-card {
+    background: linear-gradient(135deg, #6f78ea 0%, #435af8 100%);
+}
+
+.buy-button {
+    background: linear-gradient(180deg, #6579fe 0%, #3c57ff 100%);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+.animate-slideUp {
+    animation: slideUp 0.25s ease-out;
+}
