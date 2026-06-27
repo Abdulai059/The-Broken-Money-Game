@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { PlusIcon } from "lucide-react";
+import SpeechBubble from "@/components/ui/SpeechBubble";
 
 export default function OtherItems() {
   return (
@@ -27,7 +28,10 @@ export default function OtherItems() {
         style={{
           backgroundImage: `url(https://assets.codepen.io/3685267/wheel-of-fortune-zjlspegv.png)`,
         }}
-      ></div>
+      ><div className="absolute -top-8 -right-20"> <SpeechBubble typewriter speed={80} tail="bottom"> your financial liberty circle! </SpeechBubble> </div></div>
+
+      {/* <div className="absolute right-0 top-8 md:-top-8 size-40 sm:size-64 relative">  <div className="size-full bg-cover bg-center" style={{ backgroundImage: `url(https://assets.codepen.io/3685267/wheel-of-fortune-zjlspegv.png)`, }} />  <div className="absolute -top-8 -right-4"> <SpeechBubble tail="bottom"> Hi there! </SpeechBubble> </div> </div> */}
+
 
       {/* Middle Top Info */}
       <div className="absolute left-1/2 -translate-x-1/2 top-[230px] md:top-[250px] w-43 sm:w-64">

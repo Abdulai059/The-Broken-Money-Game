@@ -14,9 +14,17 @@ const PATH_TO_NAV_LABEL: Record<string, string> = {
     "/settings": "Settings",
 };
 
+// Routes that should NOT render the shell chrome
+const SHELL_EXCLUDED = ["/onboarding"];
+
 export default function ShellLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const activeNav = PATH_TO_NAV_LABEL[pathname] ?? "";
+    const showShell = !SHELL_EXCLUDED.includes(pathname);
+
+    if (!showShell) {
+        return <>{children}</>;
+    }
 
     return (
         <>

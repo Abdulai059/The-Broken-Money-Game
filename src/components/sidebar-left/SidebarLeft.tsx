@@ -1,28 +1,52 @@
-// @ts-nocheck
 'use client'
+
+import { usePathname, useRouter } from "next/navigation";
 
 import { PlusIcon, ExternalLinkIcon, SettingsIcon } from "lucide-react";
 import { CustomBellIcon2 } from "@/components/icons/CustomBellIcon2";
 import { FlowerIcon } from "@/components/icons/FlowerIcon";
 import { FriendsIcon } from "@/components/icons/FriendsIcon";
+
 import SidebarMenuItem from "./SidebarMenuItem";
 import SidebarSection from "./SidebarSection";
 import SidebarFeatureCard from "./SidebarFeatureCard";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import SidebarFooter from "./SidebarFooter";
-
 const MENU_ITEMS = [
-    { title: "Home", image: "https://assets.codepen.io/3685267/wheel-of-fortune-xvtrdzgw.png" },
-    { title: "Shop", image: "https://assets.codepen.io/3685267/wheel-of-fortune-zileulop.png" },
-    { title: "Modules", image: "https://i.postimg.cc/XY6kSCd9/craiyon-070228-image.png" },
-    { title: "Daily Streak", image: "https://assets.codepen.io/3685267/wheel-of-fortune-bjjsgsee.png" },
-    { title: "Leaderboard", image: "https://assets.codepen.io/3685267/wheel-of-fortune-smzxdvfg.png" },
+    {
+        title: "Home",
+        image: "https://assets.codepen.io/3685267/wheel-of-fortune-xvtrdzgw.png",
+        path: "/",
+    },
+    {
+        title: "Shop",
+        image: "https://assets.codepen.io/3685267/wheel-of-fortune-zileulop.png",
+        path: "/shop",
+    },
+    {
+        title: "Modules",
+        image: "https://i.postimg.cc/XY6kSCd9/craiyon-070228-image.png",
+        path: "/modules",
+    },
+    {
+        title: "Daily Streak",
+        image: "https://assets.codepen.io/3685267/wheel-of-fortune-bjjsgsee.png",
+        path: "/daily-streak",
+    },
+    {
+        title: "Leaderboard",
+        image: "https://assets.codepen.io/3685267/wheel-of-fortune-smzxdvfg.png",
+        path: "/leaderboard",
+    },
+    {
+        title: "Liberty Circle",
+        image: "https://i.postimg.cc/XY6kSCd9/craiyon-070228-image.png",
+        path: "/liberty-circle",
+    },
 ];
 
 export default function SidebarLeft() {
-    const [selectedIndex, setSelectedIndex] = useState(0);
     const router = useRouter();
+    const pathname = usePathname();
 
     return (
         <aside className="px-4 w-64 fixed top-16 left-4 bottom-4 bg-[#242834] rounded-md overflow-y-auto hidden xl:block pt-4">
@@ -36,12 +60,12 @@ export default function SidebarLeft() {
             />
 
             <div className="flex flex-col space-y-3 mt-2">
-                {MENU_ITEMS.map((item, idx) => (
+                {MENU_ITEMS.map((item) => (
                     <SidebarMenuItem
-                        key={idx}
-                        selected={selectedIndex === idx}
-                        onClick={() => setSelectedIndex(idx)}
+                        key={item.title}
+                        selected={pathname === item.path}
                         {...item}
+                        onClick={() => router.push(item.path)}
                     />
                 ))}
             </div>
