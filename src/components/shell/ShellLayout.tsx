@@ -9,13 +9,13 @@ import BottomNav from "@/components/nav/BottomNav";
 import ClickSound from "@/components/ui/ClickSound";
 
 const PATH_TO_NAV_LABEL: Record<string, string> = {
-    "/": "Home",
+    "/game": "Home",
     "/rewards": "Rewards",
     "/settings": "Settings",
 };
 
 // Routes that should NOT render the shell chrome
-const SHELL_EXCLUDED = ["/onboarding"];
+const SHELL_EXCLUDED = ["/", "/welcome"];
 
 export default function ShellLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();

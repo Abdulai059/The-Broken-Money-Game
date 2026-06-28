@@ -15,7 +15,7 @@ const MENU_ITEMS = [
     {
         title: "Home",
         image: "https://assets.codepen.io/3685267/wheel-of-fortune-xvtrdzgw.png",
-        path: "/",
+        path: "/game",
     },
     {
         title: "Shop",

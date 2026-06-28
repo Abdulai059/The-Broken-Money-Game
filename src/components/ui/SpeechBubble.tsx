@@ -12,7 +12,7 @@ interface SpeechBubbleProps {
 
 const tailStyles: Record<TailDirection, string> = {
     bottom:
-        "border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[10px] border-t-[#58cc02] -bottom-[10px] left-7",
+        "border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[10px] border-t-[#2e2e3a] -bottom-[10px] left-7",
     top:
         "border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[10px] border-b-[#2e2e3a] -top-[10px] left-7",
     left:
@@ -62,7 +62,7 @@ export default function SpeechBubble({
         <div className="relative inline-block">
             <div
                 className={`
-          bg-[#58cc02] text-[#e8e8e8]
+          bg-[#2e2e3a] text-[#e8e8e8]
           text-sm font-medium
           px-4 py-2 rounded-xl
           border border-[#44445a]

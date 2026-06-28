@@ -298,7 +298,7 @@ export default function OnboardingScene() {
 
     const finish = useCallback(() => {
         completeOnboarding();
-        router.replace("/");
+        router.replace("/game");
     }, [completeOnboarding, router]);
 
     const handleDecision = useCallback((choice: "spend" | "plant") => {
@@ -309,7 +309,7 @@ export default function OnboardingScene() {
     const handleDayTwoDone = useCallback(() => {
         showReward();
         completeOnboarding();
-        router.replace("/");
+        router.replace("/game");
     }, [showReward, completeOnboarding, router]);
 
     return (
