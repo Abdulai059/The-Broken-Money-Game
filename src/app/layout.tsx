@@ -6,11 +6,34 @@ import ShellLayout from "@/components/shell/ShellLayout";
 import { Playpen_Sans } from "next/font/google";
 
 
-export const metadata = {
-    title: "Wealth-Tree",
-    description: "Financial freedom starts here.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: {
+        default: "The Hustle",
+        template: "%s | The Hustle",
+    },
+    description:
+        "The strategy game that rewires how you think about money. Build assets, grow wealth, and develop lifelong investing habits through play.",
+    applicationName: "The Hustle",
+    keywords: [
+        "financial game",
+        "investment game",
+        "wealth building",
+        "strategy game",
+        "financial literacy",
+        "money mindset",
+        "personal finance",
+        "investing",
+        "Web3 game",
+    ],
+    authors: [{ name: "The Hustle Team" }],
+    creator: "The Hustle",
+    publisher: "The Hustle",
     icons: {
         icon: "/assets/logo.png",
+        shortcut: "/assets/logo.png",
+        apple: "/assets/logo.png",
     },
 };
 
