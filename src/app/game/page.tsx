@@ -2,7 +2,7 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import HomePage from "@/app/_components/HomePage";
+import GameDashboard from "@/app/_components/GameDashboard";
 import JackpotModal from "@/components/ui/JackpotModal";
 
 // Auth guard is handled centrally in ShellLayout
@@ -21,7 +21,7 @@ export default function GamePage() {
 
     return (
         <>
-            <HomePage />
+            <GameDashboard />
             <JackpotModal
                 isOpen={showJackpot}
                 onClose={() => setShowJackpot(false)}

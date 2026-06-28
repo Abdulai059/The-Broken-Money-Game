@@ -2,19 +2,21 @@
 'use client'
 
 import { createContext, useContext, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { useAudioStore } from "@/store/useAudioStore";
 
 /**
  * MusicProvider
  *
  * Owns the actual <audio> elements (bgAudioRef, clickAudioRef).
- * All preference state (playing, soundEffects) now lives in
- * useAudioStore (Zustand) and is persisted to localStorage automatically.
+ * All preference state (playing, soundEffects) lives in useAudioStore (Zustand).
  *
- * This context now only exposes playClick() — the one action that
- * needs direct access to the audio ref at call time.
- * Components that need to toggle music/effects import useAudioStore directly.
+ * Music is route-aware:
+ * - Paused on public routes (/, /welcome) — no game music on landing/onboarding
+ * - Plays on all protected routes when `playing` is true in the store
  */
+
+const PUBLIC_ROUTES = ["/", "/welcome"];
 
 const MusicContext = createContext<{ playClick: () => void } | null>(null);
 
@@ -22,9 +24,9 @@ export function MusicProvider({ children }) {
     const bgAudioRef = useRef<HTMLAudioElement>(null);
     const clickAudioRef = useRef<HTMLAudioElement>(null);
 
+    const pathname = usePathname();
     const playing = useAudioStore((s) => s.playing);
     const soundEffects = useAudioStore((s) => s.soundEffects);
-    const toggleMusic = useAudioStore((s) => s.toggleMusic);
 
     const playClick = () => {
         if (!soundEffects || !clickAudioRef.current) return;
@@ -32,28 +34,32 @@ export function MusicProvider({ children }) {
         clickAudioRef.current.play().catch(() => { });
     };
 
-    // React to playing changes — play or pause bg music accordingly
+    // Route-aware music control — pause on public routes, play on protected ones
     useEffect(() => {
         if (!bgAudioRef.current) return;
-        if (playing) {
+        const isPublic = PUBLIC_ROUTES.includes(pathname);
+
+        if (isPublic || !playing) {
+            bgAudioRef.current.pause();
+        } else {
             bgAudioRef.current.loop = true;
             bgAudioRef.current.play().catch(() => { });
-        } else {
-            bgAudioRef.current.pause();
         }
-    }, [playing]);
+    }, [pathname, playing]);
 
     // Start bg music on first user interaction (browser autoplay policy)
     useEffect(() => {
         const startMusic = () => {
-            if (bgAudioRef.current && playing) {
+            if (!bgAudioRef.current) return;
+            const isPublic = PUBLIC_ROUTES.includes(pathname);
+            if (!isPublic && playing) {
                 bgAudioRef.current.loop = true;
                 bgAudioRef.current.play().catch(() => { });
             }
         };
         window.addEventListener("click", startMusic, { once: true });
         return () => window.removeEventListener("click", startMusic);
-    }, [playing]);
+    }, [pathname, playing]);
 
     return (
         <MusicContext.Provider value={{ playClick }}>

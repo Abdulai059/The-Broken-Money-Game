@@ -4,6 +4,7 @@ import type { FC } from "react";
 
 interface LandingHeroProps {
     onLogin: () => void;
+    disabled?: boolean;
 }
 
 const DUO_VIDEO_SRC = "/video/coins.mp4";
@@ -38,7 +39,7 @@ function Phone() {
     );
 }
 
-const LandingHero: FC<LandingHeroProps> = ({ onLogin }) => {
+const LandingHero: FC<LandingHeroProps> = ({ onLogin, disabled }) => {
     return (
         <main className="flex-1 flex items-center justify-center px-8 py-12">
             <div className="flex flex-row items-center justify-center gap-16 max-w-5xl w-full">
@@ -55,14 +56,16 @@ const LandingHero: FC<LandingHeroProps> = ({ onLogin }) => {
                     <div className="flex flex-col gap-3 w-full">
                         <button
                             onClick={onLogin}
-                            className="w-full bg-[#8D9CF4] hover:bg-[#8291f2] active:translate-y-[2px] active:border-b-2 text-white text-sm font-extrabold uppercase tracking-widest py-4 rounded-2xl border-b-4 border-[#5F6AB4] transition-all"
+                            disabled={disabled}
+                            className="w-full bg-[#8D9CF4] hover:bg-[#8291f2] active:translate-y-[2px] active:border-b-2 text-white text-sm font-extrabold uppercase tracking-widest py-4 rounded-2xl border-b-4 border-[#5F6AB4] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             Get started
                         </button>
 
                         <button
                             onClick={onLogin}
-                            className="w-full bg-white hover:bg-gray-50 active:translate-y-[1px] text-[#1cb0f6] text-sm font-extrabold uppercase tracking-widest py-4 rounded-2xl border-2 border-gray-200 transition-all"
+                            disabled={disabled}
+                            className="w-full bg-white hover:bg-gray-50 active:translate-y-[1px] text-[#1cb0f6] text-sm font-extrabold uppercase tracking-widest py-4 rounded-2xl border-2 border-gray-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             I already have an account
                         </button>

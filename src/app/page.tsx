@@ -18,20 +18,22 @@ export default function Page() {
         }
     }, [ready, authenticated, router]);
 
-    if (!ready) return null;
-    if (authenticated) return null;
+    // Authenticated — about to redirect, show nothing
+    if (ready && authenticated) return null;
 
+    // Render the landing page immediately — buttons are disabled until Privy is ready
+    // This prevents the dark body flash on refresh
     return (
         <div className="min-h-screen bg-white flex flex-col">
             <header className="h-16 border-b border-gray-200 flex-shrink-0">
                 <div className="max-w-5xl mx-auto h-full px-6 flex items-center justify-between">
-                    <LandingNav onLogin={login} />
+                    <LandingNav onLogin={login} disabled={!ready} />
                 </div>
             </header>
 
             <main className="flex-1 flex items-center justify-center px-6 py-16">
                 <div className="max-w-5xl mx-auto w-full">
-                    <LandingHero onLogin={login} />
+                    <LandingHero onLogin={login} disabled={!ready} />
                 </div>
             </main>
 

@@ -2,6 +2,7 @@ import type { FC } from "react";
 
 interface LandingNavProps {
     onLogin: () => void;
+    disabled?: boolean;
 }
 
 function LogoOwl() {
@@ -23,7 +24,7 @@ function LogoOwl() {
     );
 }
 
-const LandingNav: FC<LandingNavProps> = ({ onLogin }) => {
+const LandingNav: FC<LandingNavProps> = ({ onLogin, disabled }) => {
     return (
         <>
             <div className="flex items-center gap-2">
@@ -34,7 +35,8 @@ const LandingNav: FC<LandingNavProps> = ({ onLogin }) => {
             </div>
             <button
                 onClick={onLogin}
-                className="bg-[#8D9CF4] hover:bg-[#8291f2] text-white text-[13px] font-extrabold uppercase tracking-widest px-5 py-2.5 rounded-2xl border-b-[3px] border-[#5F6AB4] transition-colors"
+                disabled={disabled}
+                className="bg-[#8D9CF4] hover:bg-[#8291f2] text-white text-[13px] font-extrabold uppercase tracking-widest px-5 py-2.5 rounded-2xl border-b-[3px] border-[#5F6AB4] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 Get started
             </button>
