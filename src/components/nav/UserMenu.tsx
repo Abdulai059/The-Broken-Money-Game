@@ -41,6 +41,7 @@ export default function UserMenu() {
 
     const handleLogout = async () => {
         setOpen(false);
+        sessionStorage.removeItem("jackpot_shown");
         await logout();
     };
 
