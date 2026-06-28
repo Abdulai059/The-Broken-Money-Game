@@ -11,11 +11,13 @@ import SidebarMenuItem from "./SidebarMenuItem";
 import SidebarSection from "./SidebarSection";
 import SidebarFeatureCard from "./SidebarFeatureCard";
 import SidebarFooter from "./SidebarFooter";
+
 const MENU_ITEMS = [
     {
         title: "Home",
         image: "https://assets.codepen.io/3685267/wheel-of-fortune-xvtrdzgw.png",
         path: "/game",
+        match: ["/game", "/settings", "/rewards", "/notifications"],
     },
     {
         title: "Shop",
@@ -44,12 +46,44 @@ const MENU_ITEMS = [
     },
 ];
 
+const FEATURE_ITEMS = [
+    {
+        title: "Settings",
+        type: "route",
+        path: "/settings",
+        Icon: SettingsIcon,
+    },
+    {
+        title: "Rewards",
+        type: "route",
+        path: "/rewards",
+        Icon: FlowerIcon,
+    },
+    {
+        title: "Notification",
+        type: "route",
+        path: "/notifications",
+        Icon: CustomBellIcon2,
+    },
+    {
+        title: "Community",
+        type: "action",
+        onClick: () => console.log("Open community modal"),
+        Icon: FriendsIcon,
+    },
+];
+
 export default function SidebarLeft() {
     const router = useRouter();
     const pathname = usePathname();
 
+    // ✅ safer active matching (prevents /shop matching /shopify)
+    const isActive = (path: string) =>
+        pathname === path || pathname.startsWith(path + "/");
+
     return (
         <aside className="px-4 w-64 fixed top-16 left-4 bottom-4 bg-[#242834] rounded-md overflow-y-auto hidden xl:block pt-4">
+
             <SidebarSection
                 title="Hustle Game"
                 action={
@@ -59,17 +93,23 @@ export default function SidebarLeft() {
                 }
             />
 
+            {/* MENU ITEMS (Navigation) */}
             <div className="flex flex-col space-y-3 mt-2">
                 {MENU_ITEMS.map((item) => (
                     <SidebarMenuItem
                         key={item.title}
-                        selected={pathname === item.path}
+                        selected={
+                            item.match
+                                ? item.match.some((route) => pathname.startsWith(route))
+                                : pathname.startsWith(item.path)
+                        }
                         {...item}
                         onClick={() => router.push(item.path)}
                     />
                 ))}
             </div>
 
+            {/* FEATURE ITEMS (Routes + Actions) */}
             <div className="py-4 mt-5 border-y-2 border-[#3a3f4f]">
                 <SidebarSection
                     title="Custom Features"
@@ -81,37 +121,30 @@ export default function SidebarLeft() {
                 />
 
                 <SidebarFeatureCard>
+                    {FEATURE_ITEMS.map((item) => {
+                        const Icon = item.Icon;
 
-                    <button
-                        onClick={() => router.push("/settings")}
-                        className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group"
-                    >
-                        <SettingsIcon className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
-                        <span className="ml-2">Settings</span>
-                    </button>
-
-                    <button onClick={() => router.push("/rewards")}
-                        className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
-                        <FlowerIcon className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
-                        <span className="ml-2">Rewards</span>
-                    </button>
-
-                    <button
-                        onClick={() => router.push("/game-reminders")}
-                        className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
-                        <CustomBellIcon2 className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
-                        <span className="ml-2">Notification</span>
-                    </button>
-
-                    <button className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group">
-                        <FriendsIcon className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
-                        <span className="ml-2">Community</span>
-                    </button>
-
-
+                        return (
+                            <button
+                                key={item.title}
+                                onClick={() => {
+                                    if (item.type === "route" && item.path) {
+                                        router.push(item.path);
+                                    } else {
+                                        item.onClick?.();
+                                    }
+                                }}
+                                className="flex items-center w-full cursor-pointer text-left hover:text-white transition-colors group"
+                            >
+                                <Icon className="size-5 text-[#9fa4b0] group-hover:text-white transition-colors" />
+                                <span className="ml-2">{item.title}</span>
+                            </button>
+                        );
+                    })}
                 </SidebarFeatureCard>
             </div>
 
+            {/* Info Section */}
             <div className="flex flex-col space-y-2 mt-4">
                 <span className="font-semibold text-white">Learn &amp; Earn</span>
                 <span className="text-xs text-[#9198ae]">Daily Tasks</span>
@@ -125,6 +158,7 @@ export default function SidebarLeft() {
             <div className="mt-auto pt-6">
                 <SidebarFooter />
             </div>
+
         </aside>
     );
 }

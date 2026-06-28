@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, User, MapPin, Calendar } from 'lucide-react';
 import LinkButton from '@/components/ui/LinkButton';
+import PageHeader from '@/components/ui/PageHeader';
 
 export default function ProfileSettings() {
     const [formData, setFormData] = useState({
@@ -24,12 +25,7 @@ export default function ProfileSettings() {
     return (
         <div>
             <div className="max-w-md mx-auto">
-                <div className="sticky top-0 z-50 bg-[#161920] border-b mx-4 border-gray-800 px-0 py-4">
-                    <LinkButton to="/settings/profile" className="group flex items-center gap-2 text-indigo-500 group-hover:text-indigo-600">
-                        <ChevronLeft size={24} />
-                        Back
-                    </LinkButton>
-                </div>
+                <PageHeader title="Edit Profile" backHref="/settings/profile" />
 
                 <div className="px-6 py-6">
                     <h1 className="text-2xl font-bold text-gray-100 mb-1">Profile Settings</h1>
@@ -39,6 +35,7 @@ export default function ProfileSettings() {
                 </div>
 
                 <div className="px-6 pb-6">
+
                     <div className="flex justify-center mb-8">
                         <div className="relative">
                             <div className="w-24 h-24 rounded-full bg-gray-200 overflow-hidden">
@@ -56,7 +53,7 @@ export default function ProfileSettings() {
                         </div>
                     </div>
 
-                    <div className="space-y-5">
+                    <div className="bg-[#161920] border border-[#373e51] rounded-3xl p-4 mb-6 shadow-xl">
                         <div>
                             <label className="block text-sm font-semibold text-gray-200 mb-2">Gamer Tag / Username</label>
                             <div className="relative">
@@ -126,19 +123,7 @@ export default function ProfileSettings() {
                             </div>
                         </div>
 
-                        <div>
-                            <label className="block text-sm font-semibold text-gray-200 mb-2">Date of Birth</label>
-                            <div className="relative">
-                                <Calendar size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-                                <input
-                                    type="text"
-                                    value={formData.dateOfBirth}
-                                    onChange={(e) => handleChange('dateOfBirth', e.target.value)}
-                                    placeholder="DD / MM / YYYY"
-                                    className="w-full pl-11 pr-10 py-3 border border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-700 focus:text-gray-100 focus:border-transparent text-sm text-gray-100 placeholder-gray-400"
-                                />
-                            </div>
-                        </div>
+
 
                         <div>
                             <label className="block text-sm font-semibold text-gray-200 mb-2">Phone Number</label>
@@ -156,7 +141,7 @@ export default function ProfileSettings() {
                             </div>
                         </div>
 
-                        <button className="w-full bg-[#5f6fe4] hover:bg-[#7080ec] text-sm text-white font-semibold py-4 rounded-xl transition-colors shadow-sm">
+                        <button className="w-full bg-[#5f6fe4] mt-5 hover:bg-[#7080ec] text-sm text-white font-semibold py-4 rounded-xl transition-colors shadow-sm">
                             Save Changes
                         </button>
                     </div>

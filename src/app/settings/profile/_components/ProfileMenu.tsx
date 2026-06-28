@@ -9,7 +9,7 @@ export default function ProfileMenu() {
     const router = useRouter();
 
     const menuItems = [
-        { icon: Edit, label: 'Edit Info', color: 'text-gray-400', path: '/settings/profile/edit-profile' },
+        { icon: Edit, label: 'Edit Info', color: 'text-gray-400', path: '/settings/profile/edit' },
         { icon: Lock, label: 'Change Password', color: 'text-gray-400', path: '/settings/profile/account' },
         { icon: UserX, label: 'Close Accounts', color: 'text-gray-400', path: '/settings/close-account' },
 

@@ -33,7 +33,7 @@ export default function Notification() {
         { key: "dailySpin", icon: Star, color: "text-yellow-400", title: "Daily Spin", description: "Spin the wheel every day to earn points and rewards!" },
         { key: "completeTasks", icon: Scroll, color: "text-purple-400", title: "Complete Tasks", description: "Finish learning quests to level up." },
         { key: "claimRewards", icon: Gift, color: "text-pink-400", title: "Claim Rewards", description: "Collect your NFTs, tokens, and other prizes." },
-        { key: "boostPowerups", icon: Zap, color: "text-green-400", title: "Use Power-ups", description: "Activate boosts to multiply your points." },
+        // { key: "boostPowerups", icon: Zap, color: "text-green-400", title: "Use Power-ups", description: "Activate boosts to multiply your points." },
     ];
 
     const values = { dailySpin, completeTasks, claimRewards, boostPowerups, weeklyInsight, aiRecommendations };
@@ -43,7 +43,7 @@ export default function Notification() {
             <div className="max-w-md mx-auto">
                 <PageHeader title="Reminder" />
 
-                <div className="px-6 py-6">
+                <div className="px-6 py-4">
                     <h1 className="text-2xl font-bold text-white mb-1">Notification Settings</h1>
                     <p className="text-sm text-gray-400">Change your notification here.</p>
                 </div>

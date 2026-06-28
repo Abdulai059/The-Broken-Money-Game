@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import LinkButton from '@/components/ui/LinkButton';
+import PageHeader from '@/components/ui/PageHeader';
 
 export default function ChangePassword() {
     const [formData, setFormData] = useState({ oldPassword: '', newPassword: '', confirmPassword: '' });
@@ -22,23 +23,17 @@ export default function ChangePassword() {
     return (
         <div>
             <div className="max-w-md mx-auto">
-                <div className="sticky top-0 bg-[#161920] border-b border-[#373e51] px-0 py-3 mx-6 flex items-center gap-4">
-                    <LinkButton to="/settings/profile" className="bg-[#2a2f3a] hover:bg-[#373e51] rounded-full p-2.5 transition">
-                        <ArrowLeft className="w-6 h-6 text-gray-300" />
-                    </LinkButton>
-                </div>
+                <PageHeader title="Change Password" backHref="/settings/profile" />
+
+
 
                 <div className="px-6 py-6">
-                    <h1 className="text-2xl font-bold text-gray-100 mb-1">Change Password</h1>
-                </div>
-
-                <div className="px-6 pb-6">
-                    <h2 className="text-base font-semibold text-gray-300 mb-2">Choose a New Password</h2>
+                    <h2 className="text-2xl font-semibold text-gray-300 mb-2">Choose a New Password</h2>
                     <p className="text-sm text-gray-400 leading-relaxed mb-8">
                         Enter and confirm your new password to regain access
                     </p>
 
-                    <div className="space-y-6">
+                    <div className="space-y-6 bg-[#161920] border border-[#373e51] rounded-3xl p-4 mb-6 shadow-xl">
                         {fields.map(({ key, visKey, label }) => (
                             <div key={key}>
                                 <label className="block text-sm font-medium text-gray-200 mb-2">{label}</label>

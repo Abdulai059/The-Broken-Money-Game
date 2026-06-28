@@ -7,9 +7,9 @@ import Link from "next/link";
 const BottomNav = ({ active }) => {
     const items = [
         { name: "Rewards", icon: Gift, href: "/rewards" },
-        { name: "Tasks", icon: Clipboard, href: "/" },
-        { name: "Home", icon: Home, href: "/" },
-        { name: "Leaderboard", icon: Trophy, href: "/" },
+        { name: "Tasks", icon: Clipboard, href: "/game" },
+        { name: "Home", icon: Home, href: "/game" },
+        { name: "Leaderboard", icon: Trophy, href: "/game" },
         { name: "Settings", icon: Settings, href: "/settings" },
     ];
 

@@ -23,7 +23,7 @@ export default function SettingsPage() {
         <div className="mx-auto">
             <div className="max-w-md mx-auto text-gray-100 px-6 py-4">
 
-                <PageHeader title="Settings" />
+                <PageHeader title="Settings" backHref="/game" />
 
                 <div className="py-6">
                     <h1 className="text-2xl font-bold mb-2">Settings</h1>
@@ -43,7 +43,7 @@ export default function SettingsPage() {
                     <SettingsItem
                         icon={<Volume2 className="text-blue-400" />}
                         label="Game Sounds"
-                        onClick={() => router.push("/settings/gameSound")}
+                        onClick={() => router.push("/settings/game-sound")}
                     />
 
                     <SettingsItem

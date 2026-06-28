@@ -9,7 +9,7 @@ type PageHeaderProps = {
 
 export default function PageHeader({
     title,
-    backHref = "/",
+    backHref = "/game",
     onHelpClick,
 }: PageHeaderProps) {
     return (

@@ -80,7 +80,7 @@ export default function Rewards() {
                     </div>
 
                     <div>
-                        <h3 className="text-gray-100 text-center text-base font-bold mb-4">Mint NFTs &amp; Win Coins</h3>
+                        {/* <h3 className="text-gray-100 text-center text-base font-bold mb-4">Mint NFTs &amp; Win Coins</h3>
                         <div className="grid grid-flow-col auto-cols-[4.75rem] gap-3 mb-5 overflow-x-auto pb-2 scrollbar-hide">
                             {['/nft-card01.avif', '/nft.avif', '/fun-3d-.avif', '/3d--nft8.avif', '/nft-auction.avif'].map((src, i) => (
                                 <div key={i} className="h-24 rounded-xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer">
@@ -91,10 +91,15 @@ export default function Rewards() {
                         <button className="w-full bg-[#161920] border border-[#373e51] rounded-2xl py-4 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all mb-3">
                             <Gamepad2 className="w-5 h-5 text-white" />
                             <span className="text-white font-bold tracking-wide">MINT</span>
-                        </button>
-                        <button className="w-full text-gray-400 hover:text-gray-300 font-semibold text-sm flex items-center justify-center gap-1 transition-colors">
-                            CHECK LEADERBOARD
-                            <ChevronRight className="w-4 h-4" />
+                        </button> */}
+                        {/* <button className="w-full text-gray-400 hover:text-gray-300 font-semibold text-sm flex items-center justify-center  gap-1 transition-colors"> */}
+
+
+                        {/* New styling from the mint btn */}
+                        <button className="w-full bg-[#8291f2] border border-[#373e51] rounded-xl py-4 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all mb-3"
+                        >
+                            <span className="text-gray-100  font-bold tracking-wide"> CHECK LEADERBOARD</span>
+                            <ChevronRight className="w-4 h-4 text-gray-100  " />
                         </button>
                     </div>
                 </div>

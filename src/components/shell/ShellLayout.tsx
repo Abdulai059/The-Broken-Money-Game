@@ -1,6 +1,9 @@
 'use client'
 
-import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { usePrivy } from "@privy-io/react-auth";
+import { useOnboardingStore } from "@/store/useOnboardingStore";
 import Navbar from "@/components/navbar/Navbar";
 import Nav from "@/components/nav/Nav";
 import SidebarLeft from "@/components/sidebar-left/SidebarLeft";
@@ -14,17 +17,37 @@ const PATH_TO_NAV_LABEL: Record<string, string> = {
     "/settings": "Settings",
 };
 
-// Routes that should NOT render the shell chrome
-const SHELL_EXCLUDED = ["/", "/welcome"];
+// Routes that render without shell chrome and without auth checks
+const PUBLIC_ROUTES = ["/", "/welcome"];
 
 export default function ShellLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const activeNav = PATH_TO_NAV_LABEL[pathname] ?? "";
-    const showShell = !SHELL_EXCLUDED.includes(pathname);
+    const router = useRouter();
+    const { ready, authenticated } = usePrivy();
+    const onboardingComplete = useOnboardingStore((s) => s.onboardingComplete);
 
-    if (!showShell) {
+    const isPublic = PUBLIC_ROUTES.includes(pathname);
+    const activeNav = PATH_TO_NAV_LABEL[pathname] ?? "";
+
+    // Centralized auth guard — only runs on protected routes
+    useEffect(() => {
+        if (!ready || isPublic) return;
+        if (!authenticated) {
+            router.replace("/");
+            return;
+        }
+        if (!onboardingComplete) {
+            router.replace("/welcome");
+        }
+    }, [ready, authenticated, onboardingComplete, pathname, isPublic, router]);
+
+    // Public routes — no chrome, no auth block
+    if (isPublic) {
         return <>{children}</>;
     }
+
+    // Block render on protected routes until auth is confirmed
+    if (!ready || !authenticated || !onboardingComplete) return null;
 
     return (
         <>
@@ -33,7 +56,6 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
             <Nav />
             <SidebarLeft />
             <SidebarRight />
-            {/* Center outlet — offset from both sidebars on xl, top nav on md+, bottom nav on mobile */}
             <div className="pt-14 pb-16 md:pb-0 xl:ml-[17rem] xl:mr-[17rem]">
                 {children}
             </div>

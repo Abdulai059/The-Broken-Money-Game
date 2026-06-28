@@ -10,7 +10,7 @@ export default function GameSecurity() {
     return (
         <div>
             <div className="max-w-md mx-auto">
-                <PageHeader title="Security" />
+                <PageHeader title="Security" backHref="/settings" />
 
                 <div className="px-6 py-6">
                     <div className="flex items-center gap-3 mb-3">
