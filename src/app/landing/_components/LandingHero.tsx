@@ -25,29 +25,13 @@ function DuoOwl() {
 }
 
 
-// function DuoOwl() {
-//     return (
-//         <svg viewBox="0 0 80 72" fill="none" className="w-20 h-18">
-//             <ellipse cx="40" cy="40" rx="32" ry="30" fill="#58cc02" />
-//             <ellipse cx="40" cy="38" rx="32" ry="30" fill="#89e219" />
-//             <ellipse cx="27" cy="33" rx="10" ry="11" fill="white" />
-//             <ellipse cx="53" cy="33" rx="10" ry="11" fill="white" />
-//             <circle cx="27" cy="34" r="6" fill="#1a1a1a" />
-//             <circle cx="53" cy="34" r="6" fill="#1a1a1a" />
-//             <circle cx="29" cy="31" r="2.5" fill="white" />
-//             <circle cx="55" cy="31" r="2.5" fill="white" />
-//             <ellipse cx="40" cy="46" rx="7" ry="5" fill="#ff9600" />
-//             <ellipse cx="40" cy="48" rx="5" ry="3" fill="#ff6b00" />
-//         </svg>
-//     );
-// }
 
 
 function Phone() {
     return (
         <div className="relative w-40 h-56 flex-shrink-0">
-            <div className="absolute bottom-0 left-2 w-36 h-52 bg-[#46a302] rounded-[28px]" />
-            <div className="absolute top-0 left-0 w-36 h-52 bg-white rounded-[28px] border-2 border-[#81d44a] flex items-center justify-center">
+            <div className="absolute bottom-0 left-2 w-36 h-52 bg-[#5F6AB4] rounded-[28px]" />
+            <div className="absolute top-0 left-0 w-36 h-52 bg-white rounded-[28px] border-2 border-[#8291f2] flex items-center justify-center">
                 <DuoOwl />
             </div>
         </div>
@@ -71,7 +55,7 @@ const LandingHero: FC<LandingHeroProps> = ({ onLogin }) => {
                     <div className="flex flex-col gap-3 w-full">
                         <button
                             onClick={onLogin}
-                            className="w-full bg-[#58cc02] hover:bg-[#62d900] active:translate-y-[2px] active:border-b-2 text-white text-sm font-extrabold uppercase tracking-widest py-4 rounded-2xl border-b-4 border-[#46a302] transition-all"
+                            className="w-full bg-[#8D9CF4] hover:bg-[#8291f2] active:translate-y-[2px] active:border-b-2 text-white text-sm font-extrabold uppercase tracking-widest py-4 rounded-2xl border-b-4 border-[#5F6AB4] transition-all"
                         >
                             Get started
                         </button>

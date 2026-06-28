@@ -10,13 +10,13 @@ import BalanceBadge from "./BalanceBadge";
 import { useState } from "react";
 import Logo from "@/components/ui/Logo";
 import Search from "@/components/ui/Search";
-import ConnectWallet from "@/components/ui/ConnectWallet";
+import UserMenu from "./UserMenu";
 
 function Nav() {
     const [activeCategory, setActiveCategory] = useState("Dashboard");
 
     return (
-        <div className="fixed hidden inset-x-0 top-0 h-14 md:flex justify-between items-center px-4 bg-[#31353e] border-b border-[#3b4253]">
+        <div className="fixed hidden inset-x-0 top-0 h-14 md:flex justify-between items-center px-4 bg-[#31353e] border-b border-[#3b4253] z-50">
             <Logo />
 
             <div className="grow hidden md:flex items-center pl-30">
@@ -48,7 +48,7 @@ function Nav() {
                         <BalanceBadge icon="https://assets.codepen.io/3685267/wheel-of-fortune-aetkeerk.png" />
                     </div>
                     <div>
-                        <ConnectWallet />
+                        <UserMenu />
                     </div>
                 </div>
             </div>

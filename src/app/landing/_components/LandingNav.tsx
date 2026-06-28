@@ -28,13 +28,13 @@ const LandingNav: FC<LandingNavProps> = ({ onLogin }) => {
         <>
             <div className="flex items-center gap-2">
                 <LogoOwl />
-                <span className="text-[22px] font-extrabold text-[#58cc02] tracking-tight">
+                <span className="text-[22px] font-extrabold text-[#8291f2] tracking-tight">
                     The Hustle
                 </span>
             </div>
             <button
                 onClick={onLogin}
-                className="bg-[#58cc02] hover:bg-[#62d900] text-white text-[13px] font-extrabold uppercase tracking-widest px-5 py-2.5 rounded-2xl border-b-[3px] border-[#46a302] transition-colors"
+                className="bg-[#8D9CF4] hover:bg-[#8291f2] text-white text-[13px] font-extrabold uppercase tracking-widest px-5 py-2.5 rounded-2xl border-b-[3px] border-[#5F6AB4] transition-colors"
             >
                 Get started
             </button>

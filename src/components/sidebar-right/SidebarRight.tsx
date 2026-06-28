@@ -20,7 +20,7 @@ const MESSAGES = [
 
 export default function SidebarRight() {
     return (
-        <aside className="fixed top-16 right-4 bottom-4 w-64 bg-[#282c37] rounded-md hidden xl:flex flex-col">
+        <aside className="fixed top-16 right-4 bottom-4 w-64 bg-[#282c37] rounded-md hidden xl:flex flex-col z-10">
             <ChatHeader title="Royal Chat" action={<span>Edit</span>} />
             <MembersRow members={MEMBERS} />
             <SubscriptionCard

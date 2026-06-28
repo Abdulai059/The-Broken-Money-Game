@@ -5,6 +5,7 @@ import ResourceButton from "./ResourceButton";
 import MobileSettings from "../ui/MobileSettings";
 import Modal from "@/components/ui/Modal";
 import { usePlayerStore } from "@/store/usePlayerStore";
+import UserMenu from "@/components/nav/UserMenu";
 
 export default function TopBar({ notify }) {
     const gold = usePlayerStore((s) => s.gold);
@@ -21,9 +22,7 @@ export default function TopBar({ notify }) {
     return (
         <>
             <div className="flex md:hidden justify-between items-center px-2 py-3">
-                <button className="w-14 h-14 rounded-full border-b-4 border-white/20 bg-[#12161f]/50 text-white shadow-inner">
-                    G
-                </button>
+                <UserMenu />
 
                 <div className="flex scale-88 gap-1.5">
                     <ResourceButton icon="/emoji/trophy.gif" value={gold} onClick={() => handleEarn("gold")} />
