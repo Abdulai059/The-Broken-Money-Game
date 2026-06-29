@@ -50,7 +50,7 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
     if (!ready || !authenticated || !onboardingComplete) return null;
 
     return (
-        <>
+        <div className="bg-[#161920]">
             <ClickSound />
             <Navbar />
             <Nav />
@@ -60,6 +60,6 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
                 {children}
             </div>
             <BottomNav active={activeNav} />
-        </>
+        </div>
     );
 }

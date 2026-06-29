@@ -26,10 +26,9 @@ export default function GameDashboard() {
 
     return (
         <div
-            className="min-h-screen"
+            className="min-h-screen bg-no-repeat bg-cover bg-center"
             style={{
-                background: `url('${BG_URL}') repeat`,
-                backgroundSize: "500px 500px",
+                backgroundImage: `url(${BG_URL})`,
             }}
         >
             <Main />
