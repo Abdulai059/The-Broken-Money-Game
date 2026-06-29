@@ -21,7 +21,7 @@ interface PlayerState {
 }
 
 export const usePlayerStore = create<PlayerState>()((set) => ({
-    gold: 150,
+    gold: 100,
     fire: 0,
     water: 0,
 

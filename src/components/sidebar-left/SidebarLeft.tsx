@@ -39,11 +39,11 @@ const MENU_ITEMS = [
         image: "https://assets.codepen.io/3685267/wheel-of-fortune-smzxdvfg.png",
         path: "/leaderboard",
     },
-    {
-        title: "Liberty Circle",
-        image: "https://i.postimg.cc/XY6kSCd9/craiyon-070228-image.png",
-        path: "/liberty-circle",
-    },
+    // {
+    //     title: "Liberty Circle",
+    //     image: "https://i.postimg.cc/XY6kSCd9/craiyon-070228-image.png",
+    //     path: "/liberty-circle",
+    // },
 ];
 
 const FEATURE_ITEMS = [
