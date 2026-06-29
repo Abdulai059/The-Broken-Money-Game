@@ -50,7 +50,7 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
     if (!ready || !authenticated || !onboardingComplete) return null;
 
     return (
-        <div className="bg-[#161920]">
+        <div className="bg-[#161920] min-h-screen ">
             <ClickSound />
             <Navbar />
             <Nav />

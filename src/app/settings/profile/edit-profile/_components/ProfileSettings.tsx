@@ -23,7 +23,7 @@ export default function ProfileSettings() {
     };
 
     return (
-        <div>
+        <div className='min-h-screen md:flex md:items-center md:justify-center'>
             <div className="max-w-md mx-auto">
                 <PageHeader title="Edit Profile" backHref="/settings/profile" />
 

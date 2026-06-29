@@ -3,7 +3,7 @@ import PageHeader from "@/components/ui/PageHeader";
 
 export default function GameSoundPage() {
     return (
-        <div className="mx-auto">
+        <div className="md:min-h-screen md:flex md:items-center md:justify-center">
             <div className="max-w-md mx-auto text-gray-100 px-6 py-4">
                 <PageHeader title="Sound" backHref="/settings" />
                 <div className="py-6">

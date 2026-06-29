@@ -8,8 +8,8 @@ import PageHeader from '@/components/ui/PageHeader';
 
 export default function Rewards() {
     return (
-        <div className="p-4">
-            <div className="max-w-md mx-auto">
+        <div className="md:min-h-screen md:flex md:items-center md:justify-center">
+            <div className="w-full max-w-md mx-auto">
                 <PageHeader title="Rewards" />
 
                 <div className="border bg-[#161920] border-[#373e51] rounded-3xl p-5 flex items-center justify-between mb-6 shadow-lg shadow-[#373e51]/40">

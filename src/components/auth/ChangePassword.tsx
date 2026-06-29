@@ -21,7 +21,7 @@ export default function ChangePassword() {
     ];
 
     return (
-        <div>
+        <div className='md:min-h-screen md:flex md:items-center md:justify-center'>
             <div className="max-w-md mx-auto">
                 <PageHeader title="Change Password" backHref="/settings/profile" />
 

@@ -16,7 +16,7 @@ export default function ProfileMenu() {
     ];
 
     return (
-        <div className="flex items-center justify-center p-4">
+        <div className="md:min-h-screen md:flex md:items-center md:justify-center p-4">
             <div className="w-full max-w-sm">
                 <div className="flex items-center justify-between mb-6">
                     <button className="w-10 h-10 rounded-full border-2 border-[#373e51] flex items-center justify-center hover:bg-[#5f6fe4]/10 transition">
