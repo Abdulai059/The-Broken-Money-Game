@@ -1,4 +1,4 @@
-# 🎡 Web3 Spin Quest
+# 🎡 The-Broken-Money-Game
 
 A modern Web3-enabled browser game built to onboard users into blockchain through fun, skill-based gameplay, collectibles, and on-chain rewards.
 
@@ -8,7 +8,7 @@ This project focuses on **user experience first**, making Web3 feel simple, fast
 
 ## 🌍 Project Overview
 
-**Web3 Spin Quest** is a decentralized game where players interact with a spinning wheel mechanic to earn points, collectibles, and blockchain-based rewards.
+**The-Broken-Money-Game** is a decentralized game where players interact with a spinning wheel mechanic to earn points, collectibles, and blockchain-based rewards.
 
 The game blends:
 - Interactive SVG animations
