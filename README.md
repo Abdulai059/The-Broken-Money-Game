@@ -1,36 +1,224 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎡 Web3 Spin Quest
 
-## Getting Started
+A modern Web3-enabled browser game built to onboard users into blockchain through fun, skill-based gameplay, collectibles, and on-chain rewards.
 
-First, run the development server:
+This project focuses on **user experience first**, making Web3 feel simple, fast, and enjoyable — especially for new users.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🌍 Project Overview
+
+**Web3 Spin Quest** is a decentralized game where players interact with a spinning wheel mechanic to earn points, collectibles, and blockchain-based rewards.
+
+The game blends:
+- Interactive SVG animations
+- Real-time UI feedback
+- Smart contract integrations
+- Wallet-based player identity
+
+It is designed to be **lightweight**, **mobile-friendly**, and **easy to extend**.
+
+---
+
+## 🚀 Features
+
+### 🎡 Gameplay
+- ✅ Interactive spinning wheel
+- ✅ Smooth animations (GSAP-ready)
+- ✅ Randomized outcomes with clear probabilities
+- ✅ Visual feedback for wins and rewards
+
+### 🔗 Web3 Integration
+- ✅ Wallet connection (MetaMask / WalletConnect)
+- ✅ On-chain player identity
+- ✅ Smart contract–driven rewards
+- ✅ NFT / token-ready architecture
+
+### 🧠 User Experience
+- ✅ No Web3 knowledge required to start
+- ✅ Clean UI with Tailwind CSS
+- ✅ Responsive design (desktop & mobile)
+- ✅ Fast loading and optimized SVG rendering
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React** - Component-based UI
+- **Tailwind CSS** - Utility-first styling
+- **SVG + GSAP** - Smooth animations
+- **Vite / Next.js** - Build tooling (optional)
+
+### Web3
+- **Ethers.js / Wagmi** - Blockchain interaction
+- **Smart Contracts** - Solidity
+- **Testnet-first** deployment
+- **WalletConnect / MetaMask** - Wallet integration
+
+### Backend (Optional)
+- **Node.js** - API services
+- **API for off-chain metadata** - Player stats, leaderboards
+- **Event indexing** - The Graph / custom indexer
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── wheel/
+│   │   ├── Roll.jsx
+│   │   ├── wheelData.js
+│   │   └── wheelAnimation.js
+│   │
+│   ├── ui/
+│   │   ├── Button.jsx
+│   │   └── Modal.jsx
+│   │
+│   └── layout/
+│       └── Navbar.jsx
+│
+├── pages/
+│   └── Game.jsx
+│
+├── hooks/
+│   └── useWallet.js
+│
+├── contracts/
+│   └── SpinGame.sol
+│
+└── utils/
+    └── helpers.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧩 Smart Contract Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The smart contract handles:
+- Player registration
+- Spin validation
+- Reward distribution
+- Event emission for frontend sync
 
-## Learn More
+### Example Responsibilities
+- Prevent multiple spins in short time
+- Store player scores
+- Mint NFTs or tokens as rewards
+- Emit events for UI updates
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔐 Security Considerations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- ✅ No private keys stored
+- ✅ Wallet-based authentication only
+- ✅ All rewards validated on-chain
+- ✅ Rate-limiting for game actions
+- ✅ Tested on testnet before mainnet
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧪 Running Locally
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+git clone https://github.com/your-username/web3-spin-quest.git
+cd web3-spin-quest
+npm install
+npm run dev
+```
+
+Then open:
+```
+http://localhost:5173
+```
+
+---
+
+## 🌐 Deployment
+
+| Component | Platform |
+|-----------|----------|
+| **Frontend** | Vercel / Netlify |
+| **Contracts** | Testnet → Mainnet |
+| **Assets** | IPFS / Cloud CDN |
+
+---
+
+## 🎯 Roadmap
+
+- [x] Wallet connection
+- [x] On-chain spin logic
+- [ ] NFT rewards
+- [ ] Leaderboard
+- [ ] Multiplayer challenges
+- [ ] Mobile optimization
+- [ ] Mainnet launch
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. **Fork** the repository
+2. Create a **feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. Open a **Pull Request**
+
+---
+
+## 📜 License
+
+**MIT License**
+
+Free to use, modify, and distribute.
+
+---
+
+## 👤 Author
+
+**Abdulai Osman**
+
+Web Developer | Web3 Builder | UI Engineer
+
+- GitHub: [@your-username](https://github.com/your-username)
+- Twitter: [@your-handle](https://twitter.com/your-handle)
+- LinkedIn: [Your Name](https://linkedin.com/in/your-profile)
+
+---
+
+## ⭐ Support
+
+If you like this project:
+- ⭐ **Star** the repo
+- 🧠 **Share** feedback
+- 🤝 **Contribute** ideas
+
+---
+
+## 📸 Screenshots
+
+### Game Interface
+![Game Interface](./public/image2.png)
+
+### Wallet Connection
+![Wallet Connection](./screenshots/wallet-connection.png)
+
+### Reward Screen
+![Reward Screen](./screenshots/reward-screen.png)
+
+---
+
+## 🔥 What's Next?
+
+I can help you with:
+- 🏆 **Hackathon version** - Pitch-focused README
+- 💼 **Investor deck** - Business-oriented documentation
+- 📚 **Smart contract docs** - Technical deep-dive
+- 🎓 **Non-tech version** - Simplified for general audience
+
+Just let me know! 🚀
